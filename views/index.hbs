@@ -1,7 +1,15 @@
-<form action="/" method="POST">
-  <div class="input-group mb-3 input-form">
-    <input type="url" class="form-control" placeholder="place url here..." aria-label="originalURL"
-      aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
+{{#if shortURL}}
+  <div>
+    <h6>Your shorten URL is:</h6>
+    <p>{{originHostPath}}/{{shortURL}}</p>
   </div>
-</form>
+  <a class="btn btn-primary" href="/" role="button">Back</a>
+{{else}}
+  <form action="/" method="POST">
+    <div class="input-group mb-3 input-form">
+      <input type="url" name="url" class="form-control" placeholder="place url here..." aria-label="originalURL"
+        aria-describedby="button-addon2">
+      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
+    </div>
+  </form>
+{{/if}}
