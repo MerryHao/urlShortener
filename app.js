@@ -1,5 +1,6 @@
 const express = require('express')
 const exhbs = require('express-handlebars')
+require("./config/mongoose")
 const URL = require('./models/URL')
 const shortenUrlGenerator = require('./utilities/generateUrl')
 const app = express()
