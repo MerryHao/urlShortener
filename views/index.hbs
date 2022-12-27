@@ -1,15 +1,30 @@
 {{#if shortURL}}
+<div class="container text-center">
+  <h6>Your shorten URL is:</h6>
   <div>
-    <h6>Your shorten URL is:</h6>
-    <p>{{originHostPath}}/{{shortURL}}</p>
+    <p id="shortenedURL" class="fw-bold">{{originHostPath}}/{{shortURL}}</p>
   </div>
-  <a class="btn btn-primary" href="/" role="button">Back</a>
+  <div class="grid text-center">
+    <a class="btn btn-primary g-col-6" href="/" role="button">Back</a>
+    <button id="copyBtn" class="btn btn-dark g-col-6" onclick="copy()">copy</button>
+  </div>
+</div>
+
+<script>
+  function copy() {
+    const url = document.querySelector('#shortenedURL').innerText
+    navigator.clipboard.writeText(url)
+      .then(() => alert('already copied in the clipboard'))
+      .catch(error => console.erro(error))
+  }
+
+</script>
 {{else}}
-  <form action="/" method="POST">
-    <div class="input-group mb-3 input-form">
-      <input type="url" name="url" class="form-control" placeholder="place url here..." aria-label="originalURL"
-        aria-describedby="button-addon2">
-      <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
-    </div>
-  </form>
+<form action="/" method="POST">
+  <div class="input-group mb-3 input-form">
+    <input type="url" name="url" class="form-control" placeholder="place url here..." aria-label="originalURL"
+      aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Submit</button>
+  </div>
+</form>
 {{/if}}
