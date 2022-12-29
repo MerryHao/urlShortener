@@ -9,10 +9,10 @@ router.get('/', (req, res) => {
 
 router.post("/", (req, res) => {
   if (!req.body.url) return res.redirect("/")
-  const shortUrlGnt = shortenUrlGenerator
+  const shortURL = shortenUrlGenerator
 
   URL.findOne({ originalURL: req.body.url })
-    .then(data => data ? data : URL.create({ shortUrlGnt, originalURL: req.body.url }))
+    .then(data => data ? data : URL.create({ shortURL, originalURL: req.body.url }))
     .then(data => res.render("index", { originHostPath: req.headers.origin, shortURL: data.shortURL }))
     .catch(error => console.error(error))
 })
