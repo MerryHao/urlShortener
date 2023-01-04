@@ -7,4 +7,4 @@ function shortenUrlGenerator() {
   }
   return arr
 }
-module.exports = shortenUrlGenerator()
+module.exports = shortenUrlGenerator
